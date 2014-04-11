@@ -63,5 +63,8 @@ def get_S_and_P_500_data():
   tickers = get_top_500_tickers(ticker_file)
 
   for t in tickers:
-    url = historical_url_generator(t, "01012008", "12312013")
+    url = historical_url_generator(t, "01012005", "12312013")
     retrieve_csv_file(url, t, "01012008", "12312013")
+    
+if __name__ == "__main__":
+  get_S_and_P_500_data()
