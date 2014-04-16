@@ -10,48 +10,63 @@ class Company(models.Model):
   def __unicode__(self):
     return self.name
   
+  '''
+  def __init__(self, _name, _ticker):
+    self.name = _name
+    self.ticker = _ticker
+    '''
+
+class Historical_Data(models.Model):
+  ''' Historical Data recorded on a given day for a specific company '''
+  #company = models.ForeignKey('Company')  
+  date = models.DateTimeField()
+  opening = models.IntegerField()
+  closing = models.IntegerField()
+  high =  models.IntegerField()
+  low = models.IntegerField()
+  volume = models.IntegerField()
+  adj_close = models.IntegerField()
+  
+  def __unicode__(self):
+    return self.name
+  
+  '''
+  def __init__(self, _company, _date, _opening, _high,
+                _low, _closing, _volume, _adj_close):
+    #self.company = _company
+    self.date = _date
+    self.opening = _opening
+    self.closing = _closing
+    self.high = _high
+    self.low = _low
+    self.volume = _volume
+    self.adj_close = _adj_close
+'''
+"""  
   
 class Quote(models.Model):
   ''' A share price of a company at a specific point in time '''
   # Date
-  date = models.DateTimeField
+  date = models.DateTimeField()
   
   # Company
-  company = models.ForeignKey(Company)
+  company = models.ForeignKey('Company')
   
   # Listed Price
   price = models.IntegerField()
   
   # Historical data record
-  hist = models.ForeignKey(Historical_Data)  
+  hist = models.ForeignKey('Historical_Data')  
   
   def __unicode__(self):
     return self.name
   
+  def __init__(self, _date, _company, _price, _hist):
+    self.date = _date
+    self.company = _company
+    self.price = _price
+    self.hist = _hist
 
-class StakeHold():
-  ''' Ownership of a Stock or another Fund '''
-  
-  # Date of last modified
-  last_modified = models.DateTimeField()
-  
-  # Owner
-  fund = models.ForeignKey(Port_Indi)
-  
-  ''' StakeHold in a Stock '''
-  company = models.ForeignKey(Company)
-  amount = models.IntegerField()
-  last_quote = models.ForeignKey(Quote)
-  
-  ''' StakeHold in a Fund '''
-  fund2 = models.ForeignKey(Port_Indi)  
-  percentage = models.IntegerField()  
-  
-
-  def __unicode__(self):
-    return self.name  
-  
-  
 class Activity(models.Model):
   ''' A buy, sell, or funding '''
   
@@ -63,23 +78,32 @@ class Activity(models.Model):
   amount = models.IntegerField()
   
   # Maker of transaction
-  fund = models.ForeignKey(Port_Indi)
+  fund = models.ForeignKey('Port_Indi')
   
   # Secondary fund or stock to purchaise/sell
-  fund2 = models.ForeignKey(Port_Indi)
-  company = models.ForeignKey(Company)
+  fund2 = models.ForeignKey('Port_Indi')
+  company = models.ForeignKey('Company')
   
   def __unicode__(self):
     return self.name
   
+  def __init__(self, _act_type, _amount, _fund, _fund2,
+               _company):
+    self.act_type = _act_type
+    self.amount = _amount
+    self.fund = _fund
+    self.fund2 = _fund2
+    self.company = _company
   
+  
+
 class Port_Indi(models.Model):
   ''' Portfilio or Individual '''
   
   cash = models.IntegerField()
   
-  last_quote = models.ForeignKey(Quote)
-  last_activity = models.ForeignKey(Activity)
+  last_quote = models.ForeignKey('Quote')
+  last_activity = models.ForeignKey('Activity')
   
   networth = models.IntegerField()
   
@@ -97,20 +121,49 @@ class Port_Indi(models.Model):
   
   def __unicode__(self):
     return self.name
-
-
-class Historical_Data(models.Model):
-  ''' Historical Data recorded on a given day for a specific company '''
-  company = models.ForeignKey(Company)  
-  date = models.DateTimeField
-  opening = models.IntegerField()
-  closing = models.IntegerField()
-  high =  models.IntegerField()
-  low = models.IntegerField()
-  volume = models.IntegerField()
-  adj_close = models.IntegerField()
   
+  def __init__(self, _cash, _last_quote, _last_activity,
+               _networth, _is_individual):
+    self.cash = _cash
+    self.last_quote = _last_quote
+    self.last_activity = _last_quote
+    self.networth = _networth
+    self.is_individual = _is_individual
+
+
+
+class StakeHold():
+  ''' Ownership of a Stock or another Fund '''
+  
+  # Date of last modified
+  last_modified = models.DateTimeField()
+  
+  # Owner
+  fund = models.ForeignKey('Port_Indi')
+  
+  ''' StakeHold in a Stock '''
+  company = models.ForeignKey('Company')
+  amount = models.IntegerField()
+  last_quote = models.ForeignKey('Quote')
+  
+  ''' StakeHold in a Fund '''
+  fund2 = models.ForeignKey('Port_Indi')  
+  percentage = models.IntegerField()  
+  
+
   def __unicode__(self):
-    return self.name
+    return self.name 
+  
+  def __init__(self, _last_modified, _fund, _company, _amount, _last_quote, _fund2, _percentage):
+    self.last_modified = _last_modified
+    self.fund = _fund
+    self.company = _company
+    self.amount = _amount
+    self.last_quote = _last_quote
+    self.fund2 = _fund2
+    self.percentage =  _percentage
+  
   
 
+
+"""
