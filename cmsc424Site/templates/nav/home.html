@@ -1,0 +1,15 @@
+{% extends "nav/base.html" %}
+{% block content %}
+
+
+<h1> S&P 500 Companies <h1>
+
+<table>
+{% for item in results %}
+{% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
+<td>{{ item }}</td>
+{% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+{% endblock %}

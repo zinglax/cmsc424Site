@@ -15,5 +15,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     
+    # dataloader
     url(r'^dataloader/', 'dataloader.views.dataloader', name='resume'),
+    
+    # home
+    url(r'^$', 'dataloader.views.home', name='home'),    
 )

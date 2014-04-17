@@ -14,11 +14,14 @@ def input_company_hist():
   # Creates all of the historical data objects in the database
   yahoo_data = yahooDataRetriever.get_top_500_tickers(ticker_file)
   
+  # Loops over every csv file in the Data folder
   for i in yahoo_data:
     cr = csv.reader(open( "./dataloader/Data/" + i + ".csv", "rb"))
     
     count = 0
     for row in cr:
+      # skips description line of text at top
+      ## Date,Open,High,Low,Close,Volume,Adj Close
       if count == 0:
         continue
       h = MOD.Historical_Data()
@@ -30,7 +33,7 @@ def input_company_hist():
       h.closing = int(row[4])
       h.volume = int(row[5])
       h.adj_close = int(row[6])
-      h.save()
-      print "saved data for: "+ h
+      h.save(force_insert=True)
+      #print "saved data for: "+ h
       count = count + 1
 

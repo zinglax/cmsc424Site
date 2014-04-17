@@ -5,8 +5,8 @@ import os
 PATH_TO_FILE = os.path.abspath(os.path.dirname(__file__))
 PATH_TO_APP = os.path.dirname(os.path.dirname(PATH_TO_FILE))
 
-print PATH_TO_FILE
-print PATH_TO_APP
+print "PATH_TO_FILE IS:" + PATH_TO_FILE
+print "PATH_TO_APP IS:" + PATH_TO_APP
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -119,7 +119,10 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PATH_TO_FILE, 'templates'),
+    
 )
+print "TEMPLATE FOLDER IS:" + os.path.join(PATH_TO_FILE, 'templates')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -133,6 +136,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'dataloader',
+    'nav',
 )
 
 # A sample logging configuration. The only tangible logging

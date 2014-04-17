@@ -1,5 +1,9 @@
 from django.db import models
 
+import yahooDataRetriever
+import csv
+
+
 # Database structures used to store financial data
 
 class Company(models.Model):
@@ -167,3 +171,4 @@ class StakeHold():
 
 
 """
+
