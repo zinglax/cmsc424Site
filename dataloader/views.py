@@ -27,7 +27,23 @@ def home(request):
   #results = ["hello", "im a girl"]
   
   
-  return render_to_response("nav/home.html", {'results': results})
+  return render_to_response("nav/home.html", {'results':results})
+
+def investing(request):
+
+  return render_to_response("nav/investing.html", {})
+
+
+def queries(request):
+  
+  return render_to_response("nav/queries.html", {})
+
+
+def misc(request):
+  
+  return render_to_response("nav/misc.html", {})
+
+
 
 
 def input_company_hist():

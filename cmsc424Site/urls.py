@@ -19,5 +19,10 @@ urlpatterns = patterns('',
     url(r'^dataloader/', 'dataloader.views.dataloader', name='resume'),
     
     # home
-    url(r'^$', 'dataloader.views.home', name='home'),    
+    url(r'^$', 'dataloader.views.home', name='home'),
+    url(r'^investing/', 'dataloader.views.investing', name='investing'),    
+
+    url(r'^queries/', 'dataloader.views.queries', name='queries'),    
+    url(r'^misc/', 'dataloader.views.misc', name='misc'),    
+    
 )

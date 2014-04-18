@@ -2,9 +2,38 @@
   <head>
   <title>CMSC 424: Finance Project</title>
   </head>
-  <body>
+   <body>
+  
+
+  
+  
+
+ 
     <h1>CMSC 424: Finance Project #ID: 111836543</h1>
+    
+<table border=1 >
+    
+<tr>
+<td>
+<a href="{% url 'home' %}">home</a>
+</td>
+<td>
+<a href="{% url 'investing' %}">investing</a>
+</td>
+<td>
+<a href="{% url 'queries' %}">queries</a>
+</td>
+<td>
+<a href="{% url 'misc' %}">misc</a>
+</td>
+</tr>
+</table>      
+    
+    
     {% block content %}
     {% endblock %}
+    
+
+    
   </body>
 </html>
