@@ -22,14 +22,14 @@ class Company(models.Model):
 
 class Historical_Data(models.Model):
   ''' Historical Data recorded on a given day for a specific company '''
-  #company = models.ForeignKey('Company')  
+  company = models.ForeignKey('Company')  
   date = models.DateTimeField()
-  opening = models.IntegerField()
-  closing = models.IntegerField()
-  high =  models.IntegerField()
-  low = models.IntegerField()
-  volume = models.IntegerField()
-  adj_close = models.IntegerField()
+  opening = models.FloatField()
+  closing = models.FloatField()
+  high =  models.FloatField()
+  low = models.FloatField()
+  volume = models.FloatField()
+  adj_close = models.FloatField()
   
   def __unicode__(self):
     return self.name

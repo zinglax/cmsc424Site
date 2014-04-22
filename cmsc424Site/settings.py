@@ -9,7 +9,8 @@ print "PATH_TO_FILE IS:" + PATH_TO_FILE
 print "PATH_TO_APP IS:" + PATH_TO_APP
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 ADMINS = (
     ('Dylan Zingler', 'dylanzingler@gmail.com'),

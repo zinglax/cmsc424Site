@@ -1,9 +1,23 @@
-import models as MOD
 import yahooDataRetriever
 import csv
+import datetime
 
-ticker_file = "./dataloader/SandP500TickerSymbols.txt"
+from models import Historical_Data, Company
 
+name_file = "./dataloader/SandP500CompanyNames.txt"
+
+def input_companies():
+  ''' Creates the company models for each S&P 500 company'''
+  
+  yahoo_data = yahooDataRetriever.get_dict_500_companies(name_file)
+  
+  for i in yahoo_data.keys():
+    c = Company()
+    c.name = yahoo_data.get(i)
+    c.ticker = i
+    c.save()
+  
+  
 
 def input_company_hist():
   ''' Returns a dictionary of S&P 500 company historical data'''
@@ -11,29 +25,34 @@ def input_company_hist():
   # Gets all of the historical data
   #yahooDataRetriever.get_S_and_P_500_data()
   
-  # Creates all of the historical data objects in the database
-  yahoo_data = yahooDataRetriever.get_top_500_tickers(ticker_file)
+  yahoo_data = yahooDataRetriever.get_dict_500_companies(name_file)
+  
+  print "Company Ticker and Names:"
+  print yahoo_data
+  
+  for e in Company.objects.all():
+      print(e.name)  
   
   # Loops over every csv file in the Data folder
-  for i in yahoo_data:
+  for i in yahoo_data.keys():
     cr = csv.reader(open( "./dataloader/Data/" + i + ".csv", "rb"))
     
-    count = 0
+    # Starting from second row
+    cr.next()
     for row in cr:
-      # skips description line of text at top
-      ## Date,Open,High,Low,Close,Volume,Adj Close
-      if count == 0:
-        continue
-      h = MOD.Historical_Data()
-      
-      #h.date = datetime.date(
+
+      # Date,Open,High,Low,Close,Volume,Adj Close
+
+      h = Historical_Data()
+      date = row[0].split('-')
+      h.company = Company.objects.filter(name = i)
+      h.date = datetime.date(int(date[0]), int(date[1]), int(date[2]))
       h.opening = row[1]
-      h.high = int(row[2])
-      h.low = int(row[3])
-      h.closing = int(row[4])
-      h.volume = int(row[5])
-      h.adj_close = int(row[6])
+      h.high = float(row[2])
+      h.low = float(row[3])
+      h.closing = float(row[4])
+      h.volume = float(row[5])
+      h.adj_close = float(row[6])
       h.save(force_insert=True)
-      #print "saved data for: "+ h
-      count = count + 1
+      print "saved data for: "+ i
 

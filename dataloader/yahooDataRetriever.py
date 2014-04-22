@@ -19,6 +19,23 @@ def get_top_500_tickers(f):
   
   return j
 
+def get_dict_500_companies(f):
+  '''Generates a dictionary with all 500 company names (Value) and ticker (Key)'''
+  
+  fl = open(f)
+  lines = fl.readlines()
+  fl.close()
+  
+  j = {}
+  
+  for i in lines:
+    i = i.split("~")
+    j[i[0].strip()] = i[1]
+  
+  return j
+
+  
+
 
 def historical_url_generator(company_ticker, from_date, to_date):
   ''' Creates a URL for the historical data of a given company, dates formatted
@@ -67,4 +84,6 @@ def get_S_and_P_500_data():
     retrieve_csv_file(url, t, "01012008", "12312013")
     
 if __name__ == "__main__":
-  get_S_and_P_500_data()
+  #get_S_and_P_500_data()
+  get_dict_500_companies()
+  
