@@ -11,7 +11,7 @@ ticker_file = "./dataloader/SandP500TickerSymbols.txt"
 
 def dataloader(request):
   name = 'Dylan'
-  html = '<html><body background="http://colourlovers.com.s3.amazonaws.com/images/patterns/1202/1202172.png">Hi %s. this is your resume!</body></html>' % name
+  html = '<html><body background="http://colourlovers.com.s3.amazonaws.com/images/patterns/1202/1202172.png">Historical Data and companies are now objectified in a sqlite3 database</body></html>' 
 
   d.input_companies()  
   d.input_company_hist()

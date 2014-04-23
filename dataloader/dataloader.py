@@ -45,8 +45,9 @@ def input_company_hist():
 
       h = Historical_Data()
       date = row[0].split('-')
-      h.company = Company.objects.filter(name = i)
-      h.date = datetime.date(int(date[0]), int(date[1]), int(date[2]))
+      companies = Company.objects.filter(name = i)
+      h.company = companies[0]
+      h.date = date[0]+date[1]+date[2]
       h.opening = row[1]
       h.high = float(row[2])
       h.low = float(row[3])

@@ -23,7 +23,7 @@ class Company(models.Model):
 class Historical_Data(models.Model):
   ''' Historical Data recorded on a given day for a specific company '''
   company = models.ForeignKey('Company')  
-  date = models.DateTimeField()
+  date = models.CharField(max_length=8)
   opening = models.FloatField()
   closing = models.FloatField()
   high =  models.FloatField()
