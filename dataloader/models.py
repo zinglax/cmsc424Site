@@ -9,7 +9,7 @@ import csv
 class Company(models.Model):
   ''' A S&P500 Company '''
   name = models.CharField(max_length=200)
-  ticker = models.CharField(max_length=4)
+  ticker = models.CharField(max_length=5)
   
   def __unicode__(self):
     return self.name
@@ -46,7 +46,7 @@ class Historical_Data(models.Model):
     self.volume = _volume
     self.adj_close = _adj_close
 '''
-"""  
+
   
 class Quote(models.Model):
   ''' A share price of a company at a specific point in time '''
@@ -65,41 +65,13 @@ class Quote(models.Model):
   def __unicode__(self):
     return self.name
   
+  '''
   def __init__(self, _date, _company, _price, _hist):
     self.date = _date
     self.company = _company
     self.price = _price
     self.hist = _hist
-
-class Activity(models.Model):
-  ''' A buy, sell, or funding '''
-  
-  # Buy, sell, or fund
-  act_type = models.CharField(max_length=50)
-  
-  # Cash value
-  # used for a funding or buying of a specific portfolio or stock
-  amount = models.IntegerField()
-  
-  # Maker of transaction
-  fund = models.ForeignKey('Port_Indi')
-  
-  # Secondary fund or stock to purchaise/sell
-  fund2 = models.ForeignKey('Port_Indi')
-  company = models.ForeignKey('Company')
-  
-  def __unicode__(self):
-    return self.name
-  
-  def __init__(self, _act_type, _amount, _fund, _fund2,
-               _company):
-    self.act_type = _act_type
-    self.amount = _amount
-    self.fund = _fund
-    self.fund2 = _fund2
-    self.company = _company
-  
-  
+'''
 
 class Port_Indi(models.Model):
   ''' Portfilio or Individual '''
@@ -126,6 +98,7 @@ class Port_Indi(models.Model):
   def __unicode__(self):
     return self.name
   
+  '''
   def __init__(self, _cash, _last_quote, _last_activity,
                _networth, _is_individual):
     self.cash = _cash
@@ -133,6 +106,38 @@ class Port_Indi(models.Model):
     self.last_activity = _last_quote
     self.networth = _networth
     self.is_individual = _is_individual
+    '''
+
+class Activity(models.Model):
+  ''' A buy, sell, or funding '''
+  
+  # Buy, sell, or fund
+  act_type = models.CharField(max_length=50)
+  
+  # Cash value
+  # used for a funding or buying of a specific portfolio or stock
+  amount = models.IntegerField()
+  
+  # Maker of transaction
+  port_indi1 = models.ForeignKey('Port_Indi', related_name='port_indi1')
+  
+  # Secondary fund or stock to purchaise/sell
+  port_indi2 = models.ForeignKey('Port_Indi', related_name='port_indi2')
+  company = models.ForeignKey('Company')
+  
+  def __unicode__(self):
+    return self.name
+  
+  '''
+  def __init__(self, _act_type, _amount, _fund, _fund2,
+               _company):
+    self.act_type = _act_type
+    self.amount = _amount
+    self.fund = _fund
+    self.fund2 = _fund2
+    self.company = _company
+  '''
+  
 
 
 
@@ -158,6 +163,8 @@ class StakeHold():
   def __unicode__(self):
     return self.name 
   
+  
+  '''
   def __init__(self, _last_modified, _fund, _company, _amount, _last_quote, _fund2, _percentage):
     self.last_modified = _last_modified
     self.fund = _fund
@@ -166,9 +173,9 @@ class StakeHold():
     self.last_quote = _last_quote
     self.fund2 = _fund2
     self.percentage =  _percentage
-  
+  '''
   
 
 
-"""
+
 

@@ -13,6 +13,10 @@ def dataloader(request):
   name = 'Dylan'
   html = '<html><body background="http://colourlovers.com.s3.amazonaws.com/images/patterns/1202/1202172.png">Historical Data and companies are now objectified in a sqlite3 database</body></html>' 
 
+  # Testing
+  #d.input_company_hist_test()
+
+  # Methods to load data
   d.input_companies()  
   d.input_company_hist()
 
@@ -26,7 +30,10 @@ def home(request):
   
   return render_to_response("nav/home.html", {'results':results})
 
+
+
 def investing(request):
+  
 
   return render_to_response("nav/investing.html", {})
 

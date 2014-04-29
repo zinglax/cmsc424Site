@@ -139,7 +139,7 @@ DVN ~Devon Energy Corp. ~reports ~Energy ~Oil & Gas Exploration & Production ~Ok
 DO ~Diamond Offshore Drilling ~reports ~Energy ~Oil & Gas Drilling ~Houston, Texas ~
 DTV ~DirecTV ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~El Segundo, California ~
 DFS ~Discover Financial Services ~reports ~Financials ~Consumer Finance ~Riverwoods, Illinois ~
-DISCA ~Discovery Communications ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Silver Spring, Maryland ~
+DISC ~Discovery Communications ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Silver Spring, Maryland ~
 DG ~Dollar General ~reports ~Consumer Discretionary ~General Merchandise Stores ~Goodlettsville, Tennessee ~2012-12-03
 DLTR ~Dollar Tree ~reports ~Consumer Discretionary ~General Merchandise Stores ~Chesapeake, Virginia ~2011-12-16
 D ~Dominion Resources ~reports ~Utilities ~Multi-Utilities & Unregulated Power ~Richmond, Virginia ~

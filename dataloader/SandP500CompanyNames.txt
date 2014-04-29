@@ -61,7 +61,7 @@ BEAM ~Beam Inc. ~reports ~Consumer Staples ~Distillers & Vintners ~Deerfield, Il
 BDX ~Becton Dickinson ~reports ~Health Care ~Health Care Equipment & Services ~Franklin Lakes, New Jersey ~
 BBBY ~Bed Bath & Beyond ~reports ~Consumer Discretionary ~Specialty Stores ~Union, New Jersey ~
 BMS ~Bemis Company ~reports ~Materials ~Paper Packaging ~Neenah, Wisconsin ~
-BRK.B ~Berkshire Hathaway ~reports ~Financials ~Multi-Sector Holdings ~Omaha, Nebraska ~
+BRK. ~Berkshire Hathaway ~reports ~Financials ~Multi-Sector Holdings ~Omaha, Nebraska ~
 BBY ~Best Buy Co. Inc. ~reports ~Consumer Discretionary ~Computer & Electronics Retail ~Richfield, Minnesota ~
 BIIB ~BIOGEN IDEC Inc. ~reports ~Health Care ~Biotechnology ~Weston, Massachusetts ~
 BLK ~BlackRock ~reports ~Financials ~Diversified Financial Services ~New York, New York ~
@@ -111,7 +111,7 @@ KO ~The Coca Cola Company ~reports ~Consumer Staples ~Soft Drinks ~Atlanta, Geor
 CCE ~Coca-Cola Enterprises ~reports ~Consumer Staples ~Soft Drinks ~Atlanta, Georgia
 CTSH ~Cognizant Technology Solutions ~reports ~Information Technology ~IT Consulting & Services ~Teaneck, New Jersey
 CL ~Colgate-Palmolive ~reports ~Consumer Staples ~Household Products ~New York, New York ~
-CMCSA ~Comcast Corp. ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Philadelphia, Pennsylvania ~
+CMCS ~Comcast Corp. ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Philadelphia, Pennsylvania ~
 CMA ~Comerica Inc. ~reports ~Financials ~Banks ~Dallas, Texas
 CSC ~Computer Sciences Corp. ~reports ~Information Technology ~IT Consulting & Services ~Falls Church, Virginia ~
 CAG ~ConAgra Foods Inc. ~reports ~Consumer Staples ~Packaged Foods & Meats ~Omaha, Nebraska ~
@@ -139,7 +139,7 @@ DVN ~Devon Energy Corp. ~reports ~Energy ~Oil & Gas Exploration & Production ~Ok
 DO ~Diamond Offshore Drilling ~reports ~Energy ~Oil & Gas Drilling ~Houston, Texas ~
 DTV ~DirecTV ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~El Segundo, California ~
 DFS ~Discover Financial Services ~reports ~Financials ~Consumer Finance ~Riverwoods, Illinois ~
-DISCA ~Discovery Communications ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Silver Spring, Maryland ~
+DISC ~Discovery Communications ~reports ~Consumer Discretionary ~Broadcasting & Cable TV ~Silver Spring, Maryland ~
 DG ~Dollar General ~reports ~Consumer Discretionary ~General Merchandise Stores ~Goodlettsville, Tennessee ~2012-12-03
 DLTR ~Dollar Tree ~reports ~Consumer Discretionary ~General Merchandise Stores ~Chesapeake, Virginia ~2011-12-16
 D ~Dominion Resources ~reports ~Utilities ~Multi-Utilities & Unregulated Power ~Richmond, Virginia ~
@@ -209,7 +209,7 @@ GILD ~Gilead Sciences ~reports ~Health Care ~Biotechnology ~Foster City, Califor
 GS ~Goldman Sachs Group ~reports ~Financials ~Diversified Financial Services ~New York, New York ~
 GT ~Goodyear Tire & Rubber ~reports ~Consumer Discretionary ~Tires & Rubber ~Akron, Ohio ~
 GOOG ~Google Inc. ~reports ~Information Technology ~Internet Software & Services ~Mountain View, California ~
-GOOGL ~Google Inc. ~reports ~Information Technology ~Internet Software & Services ~Mountain View, California ~
+GOOG ~Google Inc. ~reports ~Information Technology ~Internet Software & Services ~Mountain View, California ~
 GWW ~Grainger (W.W.) Inc. ~reports ~Industrials ~Industrial Materials ~Lake Forest, Illinois ~
 HAL ~Halliburton Co. ~reports ~Energy ~Oil & Gas Equipment & Services ~Houston, Texas ~
 HOG ~Harley-Davidson ~reports ~Consumer Discretionary ~Motorcycle Manufacturers ~Milwaukee, Wisconsin ~
