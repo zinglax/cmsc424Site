@@ -100,6 +100,12 @@ def investing(request):
        context_instance=RequestContext(request)
    )
 
+def portfolios(request):
+  ports = Port_Indi.objects.filter(is_individual=False)
+  indies = Port_Indi.objects.filter(is_individual=True)
+  
+  return render_to_response("nav/portfolios.html", {'portfolios':ports,'individuals':indies})
+  
 
 def queries(request):
   

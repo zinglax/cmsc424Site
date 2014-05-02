@@ -1,0 +1,23 @@
+{% extends "nav/base.html" %}
+{% block content %}
+<h1> Portfolios <h1>
+
+
+<table border="1">
+{% for item in portfolios %}
+{% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
+<td>{{ item }}</td>
+{% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+<h1> Individuals <h1>
+<table border="1">
+{% for item in individuals %}
+{% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
+<td>{{ item }}</td>
+{% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+{% endblock %}

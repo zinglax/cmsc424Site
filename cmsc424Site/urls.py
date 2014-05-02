@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     # home
     url(r'^$', 'dataloader.views.home', name='home'),
     #url(r'^investing/', 'dataloader.views.investing', name='investing'),    
+    
+    url(r'^portfolios/', 'dataloader.views.portfolios', name='portfolios'),
 
     url(r'^queries/', 'dataloader.views.queries', name='queries'),    
     url(r'^misc/', 'dataloader.views.misc', name='misc'),    
