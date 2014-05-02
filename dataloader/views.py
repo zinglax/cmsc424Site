@@ -43,8 +43,12 @@ def home(request):
 
 def investing(request):
   # Handle file upload
+  file_form = FileForm(request.POST)
+  form = DocumentForm(request.POST, request.FILES)
+  
+  
   if request.method == 'POST' and "uploadFile" in request.POST:
-      form = DocumentForm(request.POST, request.FILES)
+      #form = DocumentForm(request.POST, request.FILES)
       if form.is_valid():
           newdoc = Document(docfile = request.FILES['docfile'])
           newdoc.save()
@@ -52,7 +56,7 @@ def investing(request):
           # Redirect to the document list after POST
           return HttpResponseRedirect(reverse('dataloader.views.investing'))
   elif request.method == 'POST' and "invest" in request.POST:  
-    file_form = FileForm(request.POST)
+    #file_form = FileForm(request.POST)
     if file_form.is_valid():
       file_name = file_form.cleaned_data['file_input']
       print "### HOLY CRAP A FILE: " + file_name
