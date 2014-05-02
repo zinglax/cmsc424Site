@@ -61,7 +61,14 @@ def investing(request):
     if file_form.is_valid():
       file_name = file_form.cleaned_data['file_input']
       print "### FILE FOR INVESTMENTS: " + file_name
-      print settings.MEDIA_ROOT + "/" + file_name
+      file_path = settings.MEDIA_ROOT + "/" + file_name
+      print file_path
+      
+      cr = csv.reader(open(file_path))    
+      # Starting from second row
+      
+      for row in cr:
+        print row
       
       
       return HttpResponseRedirect(reverse('dataloader.views.investing'))
