@@ -3,3 +3,6 @@ CMSC 424 Database Website SPRING 2014
 ***********************************************************
 Author: Dylan Zingler
 
+Credits:
+http://stackoverflow.com/questions/5871730/need-a-minimal-django-file-upload-example USED FOR: file uploading
+

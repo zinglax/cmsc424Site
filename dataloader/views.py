@@ -14,6 +14,7 @@ from forms import FileForm
 
 
 from models import *
+from django.conf import settings
 
 ticker_file = "./dataloader/SandP500TickerSymbols.txt"
 
@@ -48,20 +49,28 @@ def investing(request):
   
   
   if request.method == 'POST' and "uploadFile" in request.POST:
-      #form = DocumentForm(request.POST, request.FILES)
-      if form.is_valid():
-          newdoc = Document(docfile = request.FILES['docfile'])
-          newdoc.save()
-
-          # Redirect to the document list after POST
-          return HttpResponseRedirect(reverse('dataloader.views.investing'))
+    # Upload
+    if form.is_valid():
+      newdoc = Document(docfile = request.FILES['docfile'])
+      newdoc.save()
+  
+      # Redirect to the document list after POST
+      return HttpResponseRedirect(reverse('dataloader.views.investing'))
   elif request.method == 'POST' and "invest" in request.POST:  
-    #file_form = FileForm(request.POST)
+    # Make Investments
     if file_form.is_valid():
       file_name = file_form.cleaned_data['file_input']
-      print "### HOLY CRAP A FILE: " + file_name
+      print "### FILE FOR INVESTMENTS: " + file_name
+      print settings.MEDIA_ROOT + "/" + file_name
+      
+      
       return HttpResponseRedirect(reverse('dataloader.views.investing'))
-  
+
+  elif request.method == 'POST' and "clear" in request.POST:   
+    # Clear Investments
+    print "### This should clear everything"
+    
+    
   else:
       form = DocumentForm() # A empty, unbound form
       file_form = FileForm()
