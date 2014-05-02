@@ -47,7 +47,7 @@ class Historical_Data(models.Model):
     self.adj_close = _adj_close
 '''
 
-  
+"""
 class Quote(models.Model):
   ''' A share price of a company at a specific point in time '''
   # Date
@@ -65,23 +65,28 @@ class Quote(models.Model):
   def __unicode__(self):
     return self.name
   
-  '''
+  
+ 
   def __init__(self, _date, _company, _price, _hist):
     self.date = _date
     self.company = _company
     self.price = _price
     self.hist = _hist
-'''
+"""
 
 class Port_Indi(models.Model):
   ''' Portfilio or Individual '''
   
+  name = models.CharField(max_length=8)
+  
   cash = models.IntegerField()
   
-  last_quote = models.ForeignKey('Quote')
-  last_activity = models.ForeignKey('Activity')
+  #last_quote = models.ForeignKey('Quote')
+  last_activity = models.ForeignKey('Activity',null=True, blank=True)
   
   networth = models.IntegerField()
+  
+  
   
   ''' Individual
   - Can invest in Porfolio 
@@ -111,6 +116,9 @@ class Port_Indi(models.Model):
 class Activity(models.Model):
   ''' A buy, sell, or funding '''
   
+  # Date
+  date = models.CharField(max_length=8)  
+  
   # Buy, sell, or fund
   act_type = models.CharField(max_length=50)
   
@@ -119,11 +127,11 @@ class Activity(models.Model):
   amount = models.IntegerField()
   
   # Maker of transaction
-  port_indi1 = models.ForeignKey('Port_Indi', related_name='port_indi1')
+  port_indi1 = models.ForeignKey('Port_Indi', related_name='port_indi1',null=True, blank=True)
   
   # Secondary fund or stock to purchaise/sell
-  port_indi2 = models.ForeignKey('Port_Indi', related_name='port_indi2')
-  company = models.ForeignKey('Company')
+  port_indi2 = models.ForeignKey('Port_Indi', related_name='port_indi2',null=True, blank=True)
+  company = models.ForeignKey('Company',null=True, blank=True)
   
   def __unicode__(self):
     return self.name
@@ -145,7 +153,7 @@ class StakeHold():
   ''' Ownership of a Stock or another Fund '''
   
   # Date of last modified
-  last_modified = models.DateTimeField()
+  last_modified = models.CharField(max_length=8)
   
   # Owner
   fund = models.ForeignKey('Port_Indi')
@@ -153,7 +161,7 @@ class StakeHold():
   ''' StakeHold in a Stock '''
   company = models.ForeignKey('Company')
   amount = models.IntegerField()
-  last_quote = models.ForeignKey('Quote')
+  #last_quote = models.ForeignKey('Quote')
   
   ''' StakeHold in a Fund '''
   fund2 = models.ForeignKey('Port_Indi')  

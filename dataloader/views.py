@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 import dataloader as d
 import yahooDataRetriever
+import investment_manager
 
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -68,7 +69,15 @@ def investing(request):
       # Starting from second row
       
       for row in cr:
-        print row
+        if row[0] == 'fund':
+          investment_manager.fund(row)
+        elif row[0] == 'buy':
+          investment_manager.buy(row)
+        elif row[0] == 'sell':
+          investment_manager.sell(row)
+        elif row[0] == 'sellbuy':
+          investment_manager.sellbuy(row)
+                        
       
       
       return HttpResponseRedirect(reverse('dataloader.views.investing'))
