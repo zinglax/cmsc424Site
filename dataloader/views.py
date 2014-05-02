@@ -4,6 +4,15 @@ from django.shortcuts import render_to_response
 import dataloader as d
 import yahooDataRetriever
 
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
+from models import Document
+from forms import DocumentForm
+
+
+
 from models import *
 
 ticker_file = "./dataloader/SandP500TickerSymbols.txt"
@@ -33,9 +42,26 @@ def home(request):
 
 
 def investing(request):
-  
+  # Handle file upload
+  if request.method == 'POST':
+      form = DocumentForm(request.POST, request.FILES)
+      if form.is_valid():
+          newdoc = Document(docfile = request.FILES['docfile'])
+          newdoc.save()
 
-  return render_to_response("nav/investing.html", {})
+          # Redirect to the document list after POST
+          return HttpResponseRedirect(reverse('dataloader.views.investing'))
+  else:
+      form = DocumentForm() # A empty, unbound form
+
+  # Load documents for the list page
+  documents = Document.objects.all()
+
+  return render_to_response(
+       'nav/investing.html',
+       {'documents': documents, 'form': form},
+       context_instance=RequestContext(request)
+   )
 
 
 def queries(request):

@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -20,9 +22,11 @@ urlpatterns = patterns('',
     
     # home
     url(r'^$', 'dataloader.views.home', name='home'),
-    url(r'^investing/', 'dataloader.views.investing', name='investing'),    
+    #url(r'^investing/', 'dataloader.views.investing', name='investing'),    
 
     url(r'^queries/', 'dataloader.views.queries', name='queries'),    
     url(r'^misc/', 'dataloader.views.misc', name='misc'),    
-    
-)
+
+    (r'^', include('dataloader.urls')),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    
+
