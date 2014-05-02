@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 
 from models import Document
 from forms import DocumentForm
-
+from forms import FileForm
 
 
 from models import *
@@ -43,7 +43,7 @@ def home(request):
 
 def investing(request):
   # Handle file upload
-  if request.method == 'POST':
+  if request.method == 'POST' and "uploadFile" in request.POST:
       form = DocumentForm(request.POST, request.FILES)
       if form.is_valid():
           newdoc = Document(docfile = request.FILES['docfile'])
@@ -51,15 +51,23 @@ def investing(request):
 
           # Redirect to the document list after POST
           return HttpResponseRedirect(reverse('dataloader.views.investing'))
+  elif request.method == 'POST' and "invest" in request.POST:  
+    file_form = FileForm(request.POST)
+    if file_form.is_valid():
+      file_name = file_form.cleaned_data['file_input']
+      print "### HOLY CRAP A FILE: " + file_name
+      return HttpResponseRedirect(reverse('dataloader.views.investing'))
+  
   else:
       form = DocumentForm() # A empty, unbound form
+      file_form = FileForm()
 
   # Load documents for the list page
   documents = Document.objects.all()
 
   return render_to_response(
        'nav/investing.html',
-       {'documents': documents, 'form': form},
+       {'documents': documents, 'form': form, 'file_form':file_form},
        context_instance=RequestContext(request)
    )
 
