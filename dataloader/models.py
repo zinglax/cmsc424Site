@@ -8,8 +8,8 @@ import csv
 
 class Company(models.Model):
   ''' A S&P500 Company '''
-  name = models.CharField(max_length=200)
-  ticker = models.CharField(max_length=5)
+  name = models.CharField(max_length=200,null=True, blank=True)
+  ticker = models.CharField(max_length=5,null=True, blank=True)
   
   def __unicode__(self):
     return self.name
@@ -22,14 +22,14 @@ class Company(models.Model):
 
 class Historical_Data(models.Model):
   ''' Historical Data recorded on a given day for a specific company '''
-  company = models.ForeignKey('Company')  
-  date = models.CharField(max_length=8)
-  opening = models.FloatField()
-  closing = models.FloatField()
-  high =  models.FloatField()
-  low = models.FloatField()
-  volume = models.FloatField()
-  adj_close = models.FloatField()
+  company = models.ForeignKey('Company',null=True, blank=True)  
+  date = models.CharField(max_length=8,null=True, blank=True)
+  opening = models.FloatField(null=True, blank=True)
+  closing = models.FloatField(null=True, blank=True)
+  high =  models.FloatField(null=True, blank=True)
+  low = models.FloatField(null=True, blank=True)
+  volume = models.FloatField(null=True, blank=True)
+  adj_close = models.FloatField(null=True, blank=True)
   
   def __unicode__(self):
     return self.name
@@ -77,14 +77,14 @@ class Quote(models.Model):
 class Port_Indi(models.Model):
   ''' Portfilio or Individual '''
   
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=100,null=True, blank=True)
   
-  cash = models.IntegerField()
+  cash = models.IntegerField(null=True, blank=True)
   
   #last_quote = models.ForeignKey('Quote')
   last_activity = models.ForeignKey('Activity',null=True, blank=True)
   
-  networth = models.IntegerField()
+  networth = models.IntegerField(null=True, blank=True)
   
   
   
@@ -117,14 +117,14 @@ class Activity(models.Model):
   ''' A buy, sell, or funding '''
   
   # Date
-  date = models.CharField(max_length=8)  
+  date = models.CharField(max_length=8,null=True, blank=True)  
   
   # Buy, sell, or fund
-  act_type = models.CharField(max_length=50)
+  act_type = models.CharField(max_length=50,null=True, blank=True)
   
   # Cash value
   # used for a funding or buying of a specific portfolio or stock
-  amount = models.IntegerField()
+  amount = models.IntegerField(null=True, blank=True)
   
   # Maker of transaction
   port_indi1 = models.ForeignKey('Port_Indi', related_name='port_indi1',null=True, blank=True)
@@ -153,19 +153,19 @@ class StakeHold():
   ''' Ownership of a Stock or another Fund '''
   
   # Date of last modified
-  last_modified = models.CharField(max_length=8)
+  last_modified = models.CharField(max_length=8,null=True, blank=True)
   
   # Owner
-  fund = models.ForeignKey('Port_Indi')
+  fund = models.ForeignKey('Port_Indi',null=True, blank=True)
   
   ''' StakeHold in a Stock '''
   company = models.ForeignKey('Company',null=True, blank=True)
-  amount = models.IntegerField()
+  amount = models.IntegerField(null=True, blank=True)
   #last_quote = models.ForeignKey('Quote')
   
   ''' StakeHold in a Fund '''
   fund2 = models.ForeignKey('Port_Indi',null=True, blank=True)  
-  percentage = models.IntegerField()  
+  percentage = models.IntegerField(null=True, blank=True)  
   
 
   def __unicode__(self):
