@@ -106,6 +106,11 @@ def portfolios(request):
   
   return render_to_response("nav/portfolios.html", {'portfolios':ports,'individuals':indies})
   
+def port_indi_page(request, port_indi):
+  name = port_indi
+  
+  return render_to_response("nav/portfolio.html", {'name':name})
+  
 
 def queries(request):
   

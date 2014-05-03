@@ -6,7 +6,7 @@
 <table border="1">
 {% for item in portfolios %}
 {% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
-<td>{{ item }}</td>
+<td><a href="{% url 'home' %}">{{ item }}</a></td>
 {% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
 {% endfor %}
 </table>
@@ -15,7 +15,7 @@
 <table border="1">
 {% for item in individuals %}
 {% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
-<td>{{ item }}</td>
+<td><a href="{% url 'port_indi_page' port_indi=item.name %}">{{ item }}</a></td>
 {% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
 {% endfor %}
 </table>

@@ -25,7 +25,8 @@ urlpatterns = patterns('',
     #url(r'^investing/', 'dataloader.views.investing', name='investing'),    
     
     url(r'^portfolios/', 'dataloader.views.portfolios', name='portfolios'),
-
+    #url(r'^portfolio/', 'dataloader.views.port_indi_page', name='port_indi_page'), 
+    url(r'^portfolio/(?P<port_indi>\w+)/$', 'dataloader.views.port_indi_page', name='port_indi_page'),     
     url(r'^queries/', 'dataloader.views.queries', name='queries'),    
     url(r'^misc/', 'dataloader.views.misc', name='misc'),    
 
