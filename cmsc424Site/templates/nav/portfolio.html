@@ -1,8 +1,21 @@
 {% extends "nav/base.html" %}
 {% block content %}
-<h1> {{ name }} <h1>
+{% load dataloader_filters %}
 
+<h1> {{ port.name }} <h1>
 
+<h3>Networth: {{ port.networth }}</h3>
+<h3>Cash: {{ port.cash }}</h3>
 
+<h1> Activity <h1>
+<table border="1">
+
+<tr><td>Type</td><td>Amount</td><td>date</td><td>Maker of Transaction</td><td>Portfolio</td><td>Company</td></tr>
+{% for item in activities %}
+<tr>
+<td>{{ item.act_type }}</td><td>{{ item.amount }}</td><td>{{ item.date }}</td><td>{{ item.port_indi1|get_port_indi }}</td><td>{{ item.port_indi2|get_port_indi }}</td><td>{{ item.company }}</td>
+</tr>
+{% endfor %}
+</table>
 
 {% endblock %}

@@ -77,7 +77,7 @@ class Quote(models.Model):
 class Port_Indi(models.Model):
   ''' Portfilio or Individual '''
   
-  name = models.CharField(max_length=8)
+  name = models.CharField(max_length=100)
   
   cash = models.IntegerField()
   

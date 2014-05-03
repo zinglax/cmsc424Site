@@ -13,6 +13,7 @@ from models import Document
 from forms import DocumentForm
 from forms import FileForm
 
+from itertools import chain
 
 from models import *
 from django.conf import settings
@@ -109,7 +110,23 @@ def portfolios(request):
 def port_indi_page(request, port_indi):
   name = port_indi
   
-  return render_to_response("nav/portfolio.html", {'name':name})
+  ports = Port_Indi.objects.filter(name=port_indi)
+  
+  pi = ports[0]
+  
+  #activities = Activity.objects.filter(port_indi1=pi).values('act_type','amount','company','port_indi1','port_indi2')
+  #activities2 = Activity.objects.filter(port_indi2=pi).values('act_type','amount','company','port_indi1','port_indi2')
+
+  activities = Activity.objects.filter(port_indi1=pi).values()
+  activities2 = Activity.objects.filter(port_indi2=pi).values()
+      
+  results = list(chain(activities,activities2))
+  
+  
+  
+
+  
+  return render_to_response("nav/portfolio.html", {'port':pi, 'activities':results})
 
 def company(request, company):
   name = company

@@ -31,6 +31,7 @@ def fund(row):
   port_indi.save()
   
   print port_indi
+  print act
   #psrint act.amount
   #print act.act_type
   #print act.port_indi1
