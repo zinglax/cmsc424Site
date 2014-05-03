@@ -61,7 +61,7 @@ def input_company_hist():
         h.save()
         print "#### Company: " + i + " ## Date: " + row[0]
         
-      print "##" + l + " Saved All Historical Data for: " + i
+      print "##" + str(l) + " Saved All Historical Data for: " + i
   
     except:
       f = open('companies_not_loaded.txt', 'a')
