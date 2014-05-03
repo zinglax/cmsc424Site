@@ -29,6 +29,9 @@ urlpatterns = patterns('',
     url(r'^portfolio/(?P<port_indi>\w+)/$', 'dataloader.views.port_indi_page', name='port_indi_page'),     
     url(r'^queries/', 'dataloader.views.queries', name='queries'),    
     url(r'^misc/', 'dataloader.views.misc', name='misc'),    
+    
+    url(r'^company/(?P<company>\w+)/$', 'dataloader.views.company', name='company'),  
+    #url(r'^company/', 'dataloader.views.company', name='company'),  
 
     (r'^', include('dataloader.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    

@@ -1,11 +1,13 @@
 {% extends "nav/base.html" %}
 {% block content %}
+{% load dataloader_filters %}
+
 <h1> S&P 500 Companies <h1>
 
 <table border="1">
 {% for item in results %}
 {% if forloop.counter0|divisibleby:15 %}<tr>{% endif %}
-<td>{{ item }}</td>
+<td><a href="{% url 'company' company=item|replace %}">{{ item }}</a></td>
 {% if forloop.counter|divisibleby:15 or forloop.last %}</tr>{% endif %}
 {% endfor %}
 </table>

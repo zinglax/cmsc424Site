@@ -110,6 +110,11 @@ def port_indi_page(request, port_indi):
   name = port_indi
   
   return render_to_response("nav/portfolio.html", {'name':name})
+
+def company(request, company):
+  name = company
+  
+  return render_to_response("nav/company.html", {'name':name})
   
 
 def queries(request):
