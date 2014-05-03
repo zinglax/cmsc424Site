@@ -23,14 +23,14 @@ ticker_file = "./dataloader/SandP500TickerSymbols.txt"
 
 def dataloader(request):
   name = 'Dylan'
-  html = '<html><body background="http://colourlovers.com.s3.amazonaws.com/images/patterns/1202/1202172.png">Historical Data and companies are now objectified in a sqlite3 database</body></html>' 
+  html = '<html><body>Historical Data and companies are now objectified in a sqlite3 database</body></html>' 
 
   # Testing
   #d.input_company_hist_test()
 
   # Methods to load data
   d.input_companies()  
-  d.input_company_hist()
+  #d.input_company_hist()
 
     
   return HttpResponse(html)    
@@ -70,7 +70,7 @@ def investing(request):
       # Starting from second row
       
       for row in cr:
-        if row[0] == 'fund':
+        if row[0] == 'fund' or row[0] == 'individual':
           investment_manager.fund(row)
         elif row[0] == 'buy':
           investment_manager.buy(row)
