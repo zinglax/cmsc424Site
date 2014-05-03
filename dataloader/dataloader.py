@@ -36,34 +36,42 @@ def input_company_hist():
   for e in Company.objects.all():
       print(e.name)  
   
-  l = 0  
-      
-  # Loops over every csv file in the Data folder
+  l = 1
+  
+
+    # Loops over every csv file in the Data folder
   for i in yahoo_data.keys():
-    
-    cr = csv.reader(open( "./dataloader/Data/" + i + ".csv", "rb"))    
-    # Starting from second row
-    cr.next()
-    for row in cr:
-      # Date,Open,High,Low,Close,Volume,Adj Close
-      h = Historical_Data()
-      date = row[0].split('-')
-      companies = Company.objects.filter(ticker = i)      
-      h.company = companies[0]
-      h.date = date[0] + date[1] + date[2]
-      h.opening = row[1]
-      h.high = float(row[2])
-      h.low = float(row[3])
-      h.closing = float(row[4])
-      h.volume = float(row[5])
-      h.adj_close = float(row[6])
-      h.save()
-      print "#### Company: " + i + " ## Date: " + row[0]
+    try:
+      cr = csv.reader(open( "./dataloader/Data/" + i + ".csv", "rb"))    
+      # Starting from second row
+      cr.next()
+      for row in cr:
+        # Date,Open,High,Low,Close,Volume,Adj Close
+        h = Historical_Data()
+        date = row[0].split('-')
+        companies = Company.objects.filter(ticker = i)      
+        h.company = companies[0]
+        h.date = date[0] + date[1] + date[2]
+        h.opening = row[1]
+        h.high = float(row[2])
+        h.low = float(row[3])
+        h.closing = float(row[4])
+        h.volume = float(row[5])
+        h.adj_close = float(row[6])
+        h.save()
+        print "#### Company: " + i + " ## Date: " + row[0]
+        
+      print "##" + l + " Saved All Historical Data for: " + i
+  
+    except:
+      f = open('companies_not_loaded.txt', 'a')
+      f.write(i+'\n')
+      f.close
       
-    print "## Saved All Historical Data for: " + i
     
-    if l == 1:
-      break
+    '''
+    if l == 20:
+      break'''
     l = l + 1
     
 

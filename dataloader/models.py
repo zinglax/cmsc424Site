@@ -159,12 +159,12 @@ class StakeHold():
   fund = models.ForeignKey('Port_Indi')
   
   ''' StakeHold in a Stock '''
-  company = models.ForeignKey('Company')
+  company = models.ForeignKey('Company',null=True, blank=True)
   amount = models.IntegerField()
   #last_quote = models.ForeignKey('Quote')
   
   ''' StakeHold in a Fund '''
-  fund2 = models.ForeignKey('Port_Indi')  
+  fund2 = models.ForeignKey('Port_Indi',null=True, blank=True)  
   percentage = models.IntegerField()  
   
 

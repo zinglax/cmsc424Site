@@ -70,6 +70,8 @@ def buy(row):
     stakehold.company = Company.objects.get(ticker=row[2])
   
   
+  
+  
 def sell(row):
   ''' selling investment in a portfolio or company '''
   

@@ -30,7 +30,7 @@ def dataloader(request):
 
   # Methods to load data
   d.input_companies()  
-  #d.input_company_hist()
+  d.input_company_hist()
 
     
   return HttpResponse(html)    
