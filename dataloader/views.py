@@ -129,9 +129,13 @@ def port_indi_page(request, port_indi):
   return render_to_response("nav/portfolio.html", {'port':pi, 'activities':results})
 
 def company(request, company):
-  name = company
+  comp = Company.objects.get(ticker=company)
+  hist = Historical_Data.objects.filter(company=comp)
+  name = comp.name
   
-  return render_to_response("nav/company.html", {'name':name})
+  
+  
+  return render_to_response("nav/company.html", {'name':name,'hist':hist})
   
 
 def queries(request):

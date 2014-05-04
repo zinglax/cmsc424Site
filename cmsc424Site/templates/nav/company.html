@@ -2,7 +2,21 @@
 {% block content %}
 <h1> {{ name }} <h1>
 
-
+  
+<table border="1">
+<tr><td>Date</td><td>Opening</td><td>Closing</td><td>High</td><td>Low</td><td>Volume</td><td>Adj_Close</td></tr>
+{% for item in hist %}
+<tr>
+<td>{{ item.date }}</td>
+<td>{{ item.opening }}</td>
+<td>{{ item.closing }}</td>
+<td>{{ item.high }}</td>
+<td>{{ item.low }}</td>
+<td>{{ item.volume }}</td>
+<td>{{ item.adj_close }}</td>
+</tr>
+{% endfor %}
+</table>
 
 
 {% endblock %}
