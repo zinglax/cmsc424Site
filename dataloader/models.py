@@ -149,7 +149,7 @@ class Activity(models.Model):
 
 
 
-class StakeHold():
+class StakeHold(models.Model):
   ''' Ownership of a Stock or another Fund '''
   
   # Date of last modified
