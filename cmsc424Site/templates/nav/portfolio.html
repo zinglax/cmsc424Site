@@ -7,7 +7,16 @@
 <h3>Networth: {{ port.networth }}</h3>
 <h3>Cash: {{ port.cash }}</h3>
 
-<h1> Activity <h1>
+<h2> Stocks </h2>
+<table border="1">
+<tr><td>Amount</td><td>Company</td><td>Percentage</td><td>Portfolio</td></tr>
+{% for item in stocks %}
+<tr>
+<td>{{ item.amount }}</td><td>{{ item.company }}</td><td>{{ item.percentage }}</td><td>{{ item.fund2 }}</td></tr>
+{% endfor %}
+</table>
+
+<h2> Activity <h2>
 <table border="1">
 
 <tr><td>Type</td><td>Amount</td><td>date</td><td>Maker of Transaction</td><td>Portfolio</td><td>Company</td></tr>

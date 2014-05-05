@@ -119,6 +119,8 @@ def port_indi_page(request, port_indi):
 
   activities = Activity.objects.filter(port_indi1=pi).values()
   activities2 = Activity.objects.filter(port_indi2=pi).values()
+  
+  stocks = StakeHold.objects.filter(fund=pi)
       
   results = list(chain(activities,activities2))
   
@@ -126,7 +128,7 @@ def port_indi_page(request, port_indi):
   
 
   
-  return render_to_response("nav/portfolio.html", {'port':pi, 'activities':results})
+  return render_to_response("nav/portfolio.html", {'port':pi, 'activities':results, 'stocks':stocks})
 
 def company(request, company):
   comp = Company.objects.get(ticker=company)

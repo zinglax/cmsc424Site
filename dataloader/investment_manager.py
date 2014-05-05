@@ -88,9 +88,12 @@ def buy(row):
     
     
     # Checking funds
-    if cash >= act.amount:
+    if cash >= float(act.amount):
       stake.save()
-      act.save()      
+      act.save()
+      buying_port.cash = cash - int(act.amount)
+      buying_port.save()
+      print "## BUY TRANSACTION COMPLETED"
     else:
       print "### INSUFFICIENT FUNDS: TRANSACTION NOT COMPLETED"
       
