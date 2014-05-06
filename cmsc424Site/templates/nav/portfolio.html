@@ -9,17 +9,17 @@
 
 <h2> Stocks </h2>
 <table border="1">
-<tr><td>Amount</td><td>Company</td><td>Percentage</td><td>Portfolio</td></tr>
+<tr><td>Shares</td><td>Company</td><td>Percentage</td><td>Portfolio</td></tr>
 {% for item in stocks %}
 <tr>
-<td>{{ item.amount }}</td><td>{{ item.company }}</td><td>{{ item.percentage }}</td><td>{{ item.fund2 }}</td></tr>
+<td>{{ item.shares }}</td><td>{{ item.company }}</td><td>{{ item.percentage }}</td><td>{{ item.fund2 }}</td></tr>
 {% endfor %}
 </table>
 
 <h2> Activity <h2>
 <table border="1">
 
-<tr><td>Type</td><td>Amount</td><td>date</td><td>Maker of Transaction</td><td>Portfolio</td><td>Company</td></tr>
+<tr><td>Type</td><td>Stocks</td><td>date</td><td>Maker of Transaction</td><td>Portfolio</td><td>Company</td></tr>
 {% for item in activities %}
 <tr>
 <td>{{ item.act_type }}</td><td>{{ item.amount }}</td><td>{{ item.date }}</td><td>{{ item.port_indi1|get_port_indi }}</td><td>{{ item.port_indi2|get_port_indi }}</td><td>{{ item.company }}</td>

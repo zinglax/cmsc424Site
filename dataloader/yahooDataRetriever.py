@@ -6,7 +6,7 @@ ticker_file = "./dataloader/SandP500TickerSymbols.txt"
 def get_top_500_tickers(f):
   ''' Generates a list of S&P 500 tickers and returns them '''
   # gets lines of file
-  f = open(ticker_file)
+  f = open(f)
   lines = f.readlines()
   f.close()
   

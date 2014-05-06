@@ -86,6 +86,10 @@ def investing(request):
   elif request.method == 'POST' and "clear" in request.POST:   
     # Clear Investments
     print "### This should clear everything"
+    Activity.objects.all().delete()
+    StakeHold.objects.all().delete()
+    Port_Indi.objects.all().delete()
+    print "### OK check porfolio page"
     
     
   else:
@@ -110,9 +114,9 @@ def portfolios(request):
 def port_indi_page(request, port_indi):
   name = port_indi
   
-  ports = Port_Indi.objects.filter(name=port_indi)
-  
-  pi = ports[0]
+  #ports = Port_Indi.objects.filter(name=port_indi)
+  pi = Port_Indi.objects.get(name=port_indi)
+  #pi = ports[0]
   
   #activities = Activity.objects.filter(port_indi1=pi).values('act_type','amount','company','port_indi1','port_indi2')
   #activities2 = Activity.objects.filter(port_indi2=pi).values('act_type','amount','company','port_indi1','port_indi2')

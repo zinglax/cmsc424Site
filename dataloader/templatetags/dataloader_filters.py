@@ -16,4 +16,5 @@ def get_port_indi(value):
     print value
     port = Port_Indi.objects.get(pk=value)
   
+  print 'HELLO' + port.name
   return port.name
